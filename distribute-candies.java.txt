@@ -1,0 +1,9 @@
+class Solution {
+    public int distributeCandies(int[] candyType) {
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        for(int i:candyType){
+            mp.put(i, mp.getOrDefault(i, 0)+1);
+        }
+        return Math.min(mp.size(), candyType.length/2);
+    }
+}

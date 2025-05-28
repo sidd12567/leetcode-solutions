@@ -1,0 +1,36 @@
+class Solution {
+public:
+    string greatestLetter(string s) {
+        map<char,int> mp;
+        map<char,int> np;
+        for(char c:s){
+            if(c>=65 && c<=90){
+                mp[c]++;
+                
+            }        
+            else{
+                np[c]++;
+            }
+        }
+        vector<char> ans;
+        for(int i=0;i<s.size();i++){
+            char in=toupper(s[i]);
+            char ti=tolower(s[i]);
+            if(mp.find(in)!=mp.end() && np.find(ti)!=np.end()){
+                ans.push_back(in);
+                
+            }
+        }
+        if(ans.size()==0){
+            return "";
+        }
+        sort(ans.begin(),ans.end());
+        int si=ans.size();
+        char ann=ans[si-1];
+        
+        string ai;
+        ai+=ann;
+       
+        return ai;
+    }
+};

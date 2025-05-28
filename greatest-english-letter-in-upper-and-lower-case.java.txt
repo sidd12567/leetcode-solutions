@@ -1,0 +1,13 @@
+class Solution {
+    public String greatestLetter(String s) {
+        char ans=0;
+        for(char c:s.toCharArray()){
+            if(s.indexOf(Character.toUpperCase(c))!=-1 && s.indexOf(Character.toLowerCase(c))!=-1){
+                if(ans<Character.toUpperCase(c)){
+                    ans=Character.toUpperCase(c);
+                }
+            }
+        }
+        return ans==0?"":String.valueOf(ans);
+    }
+}

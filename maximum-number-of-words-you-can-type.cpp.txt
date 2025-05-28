@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int canBeTypedWords(string text, string brokenLetters) {
+        bool brok[26]={};
+        for(char c: brokenLetters){
+            brok[c-'a']=true;
+        }
+        int ans=0,ci=0;
+        for(char c:text){
+            if(c==' '){
+                ans+=ci==0;
+                ci=0;
+            }
+            else{
+                ci+=brok[c-'a'];
+            }
+        }
+        return ans+(ci==0);
+    }
+};

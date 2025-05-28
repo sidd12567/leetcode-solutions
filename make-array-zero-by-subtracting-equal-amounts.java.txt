@@ -1,0 +1,13 @@
+class Solution {
+    public int minimumOperations(int[] nums) {
+        Arrays.sort(nums);
+        int ans=0, pr=0;
+        for(int i:nums){
+            if(i>0 && i!=pr){
+                ans++;
+                pr=i;
+            }
+        }
+        return ans;
+    }
+}

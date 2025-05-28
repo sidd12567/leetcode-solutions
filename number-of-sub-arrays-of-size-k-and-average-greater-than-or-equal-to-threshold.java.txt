@@ -1,0 +1,23 @@
+class Solution {
+    public int numOfSubarrays(int[] arr, int k, int threshold) {
+        int sm=0,j=0,i=0;
+        int si=arr.length;
+        int ans=0;
+        while(j<si){
+            sm+=arr[j];
+            if(j-i+1<k){
+                j++;
+            }
+            else{
+                if(sm/k>=threshold){
+                    ans++;
+                }
+                sm-=arr[i];
+                i++;
+                j++;
+
+            }
+        }
+        return ans;
+    }
+}

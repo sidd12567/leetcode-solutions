@@ -1,0 +1,13 @@
+class Solution {
+public:
+    vector<int> sumZero(int n) {
+        vector<int> ans(n);
+        int s=0;
+        for(int i=1;i<n;i++){
+            ans[i-1]=i;
+            s+=i;
+        }
+        ans[n-1]=-s;
+        return ans;
+    }
+};

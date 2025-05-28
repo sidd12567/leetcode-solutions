@@ -1,0 +1,15 @@
+class Solution {
+    public int countKeyChanges(String s) {
+        int ans=0;
+        char c=s.charAt(0);
+        for(int i=1;i<s.length();i++){
+            char f=Character.toLowerCase(s.charAt(i-1));
+            char ss=Character.toLowerCase(s.charAt(i));
+            
+            if(f!=ss){
+                ans++;
+            }
+        }
+        return ans;
+    }
+}

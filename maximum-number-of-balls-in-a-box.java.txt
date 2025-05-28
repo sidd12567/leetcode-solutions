@@ -1,0 +1,15 @@
+class Solution {
+    public int countBalls(int lowLimit, int highLimit) {
+        int[] ar = new int[46];
+        for(int i=lowLimit;i<=highLimit;i++){
+            int sm=0, p=i;
+            while(p>0){
+                sm+=p%10;
+                p/=10;
+            }
+            ar[sm]++;
+        }
+        int mx=Arrays.stream(ar).max().getAsInt();
+        return mx;
+    }
+}

@@ -1,0 +1,21 @@
+class Solution {
+    public List<Integer> intersection(int[][] nums) {
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        int l=nums.length;
+        int ll=nums[0].length;
+        for(int i=0;i<l;i++){
+            for(int j=0;j<nums[i].length;j++){
+                mp.put(nums[i][j], mp.getOrDefault(nums[i][j],0)+1);
+            }
+        }
+        for(Map.Entry<Integer, Integer> m:mp.entrySet()){
+            if(m.getValue()==l){
+                ans.add(m.getKey());
+            }
+        }
+        //int[] ans1=ans.stream().mapToInt(Integer::intValue).toArray();
+        Collections.sort(ans);
+        return ans;
+    }
+}

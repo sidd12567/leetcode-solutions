@@ -1,0 +1,21 @@
+class Solution {
+    public int countSubstrings(String s) {
+        int ans=0;
+        int l=s.length();
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<l;i++){
+            for(int j=i;j<l;j++){
+                sb.append(s.charAt(j));
+                StringBuilder tmp = new StringBuilder();
+
+                tmp.append(sb.toString());
+                tmp.reverse();
+                if(sb.toString().equals(tmp.toString())){
+                    ans++;
+                }
+            }
+            sb=new StringBuilder();
+        }
+        return ans;
+    }
+}

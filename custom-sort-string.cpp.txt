@@ -1,0 +1,13 @@
+
+string s1;
+bool comp(char c, char c2){
+    return s1.find(c)<s1.find(c2);
+}
+class Solution {
+public:
+    string customSortString(string order, string s) {
+        s1=order;
+        sort(s.begin(),s.end(),comp);
+        return s;
+    }
+};

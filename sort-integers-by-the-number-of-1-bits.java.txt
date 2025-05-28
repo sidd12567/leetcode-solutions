@@ -1,0 +1,28 @@
+class Solution {
+    public int[] sortByBits(int[] arr) {
+        int si = arr.length;
+        int[] ans = new int[si];
+        HashMap<Integer,ArrayList<Integer>> mp = new HashMap<>();
+        
+        for(int i=0;i<si;i++){
+            int cnt=Integer.bitCount(arr[i]);
+            if(mp.containsKey(cnt)){
+                mp.get(cnt).add(arr[i]);
+            }
+            else{
+                ArrayList<Integer> a=new ArrayList<>();
+                mp.put(cnt,a);
+                mp.get(cnt).add(arr[i]);
+            }
+        }
+        int t=0;
+        for(Map.Entry<Integer,ArrayList<Integer>> m:mp.entrySet()){
+            ArrayList<Integer> ap=m.getValue();
+            Collections.sort(ap);
+            for(int i=0;i<ap.size();i++){
+                ans[t++]=ap.get(i);
+            }
+        }
+        return ans;
+    }
+}

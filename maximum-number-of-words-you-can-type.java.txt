@@ -1,0 +1,22 @@
+import java.util.regex.*;
+class Solution {
+    public int canBeTypedWords(String text, String brokenLetters) {
+        String[] ar = text.split(" ");
+        if(brokenLetters.length()==0){
+            return ar.length;
+        }
+        
+        
+        brokenLetters='['+brokenLetters+']';
+        Pattern pt = Pattern.compile(brokenLetters);
+        int ans=0;
+        for(String s: ar){
+            Matcher ma=pt.matcher(s);
+            if(!ma.find()){
+                ans++;
+            }
+        }
+        
+        return ans;
+    }
+}

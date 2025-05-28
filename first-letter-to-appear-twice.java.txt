@@ -1,0 +1,13 @@
+class Solution {
+    public char repeatedCharacter(String s) {
+       int ans=Integer.MAX_VALUE;
+       int l=s.length();
+       for(int i=0;i<l-1;i++){
+            int ind=s.indexOf(s.charAt(i), i+1);
+            if(ind !=-1 && ind<ans ){
+                ans=ind;
+            }
+       }
+       return s.charAt(ans);
+    }
+}

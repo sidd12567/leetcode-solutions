@@ -1,0 +1,10 @@
+class Solution {
+    public long distributeCandies(int n, int l) {
+        long ans=0;
+        for(int i=Math.max(0,n-2*l);i<=Math.min(l,n);i++){
+            int j=Math.min(l,n-i)-Math.max(0,n-i-l)+1;
+            ans+=Math.max(0,j);
+        }
+        return ans;
+    }
+}

@@ -1,0 +1,26 @@
+class Solution {
+public:
+    int countLargestGroup(int n) {
+        int ans=0;
+        map<int,int> mp;
+        for(int i=1;i<=n;i++){
+            int t=i;
+            while(t){
+                ans+=t%10;
+                t=t/10;
+            }
+                mp[ans]++;
+                ans=0;
+        }
+        int ani=0;
+        map<int,int> np;
+        for(auto it:mp){
+            np[it.second]++;
+        }
+        for(auto it:np){
+            ani=it.second;   
+        }
+        return ani;
+        
+    }
+};

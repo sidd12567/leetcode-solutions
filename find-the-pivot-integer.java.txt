@@ -1,0 +1,14 @@
+class Solution {
+    public int pivotInteger(int n) {
+        int sm=(n*(n+1))/2;
+        int pr=0;
+        for(int i=1;i<=n;i++){
+            pr+=i;
+            if(pr==sm){
+                return i;
+            }
+            sm-=i;
+        }
+        return -1;
+    }
+}

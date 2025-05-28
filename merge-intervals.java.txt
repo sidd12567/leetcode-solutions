@@ -1,0 +1,29 @@
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        int prf=intervals[0][1];
+        int l=intervals.length;
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        int nxtini=0;
+        Arrays.sort(intervals, (a,b)->Integer.compare(a[0], b[0]));
+        ans.add(new ArrayList<>(Arrays.asList(intervals[0][0], intervals[0][1])));
+        if(l==1){
+            return intervals;
+        }
+        int j=0;
+        for(int i=1;i<l;i++){
+            if (ans.get(j).get(1) >= intervals[i][0]) {
+                // Merge the intervals by updating the end of the last interval
+                int newEnd = Math.max(ans.get(j).get(1), intervals[i][1]);
+                ans.get(j).set(1, newEnd); // Update the last interval's end point
+            } else {
+                // If no overlap, add the current interval to ans
+                j++;
+                ans.add(new ArrayList<>(Arrays.asList(intervals[i][0], intervals[i][1])));
+            }
+        }
+        int[][] ani1=ans.stream()
+                            .map(row -> row.stream().mapToInt(Integer::intValue).toArray())  // Convert each inner ArrayList to an int[].
+                            .toArray(int[][]::new); 
+        return ani1;
+    }
+}

@@ -1,0 +1,26 @@
+class Solution {
+    public void solve(String digits, int index, String[] mapping, List<String> ans, StringBuilder output){
+        if(index>=digits.length()){
+            ans.add(output.toString());
+            return;
+        }
+        int el=digits.charAt(index)-'0';
+        String val=mapping[el];
+        for(int i=0;i<val.length();i++){
+            output.append(val.charAt(i));
+            solve(digits, index+1, mapping, ans, output);
+            output.deleteCharAt(output.length()-1);
+        }
+    }
+    public List<String> letterCombinations(String digits) {
+        List<String> ans = new ArrayList<>();
+        StringBuilder output = new StringBuilder();
+        if(digits.length()==0){
+            return ans;
+        }
+        String[] mapping={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"}; 
+        
+        solve(digits, 0, mapping, ans, output);
+        return ans;
+    }
+}

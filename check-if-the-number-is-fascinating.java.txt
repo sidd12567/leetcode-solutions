@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isFascinating(int n) {
+        int f=2*n;
+        int l=3*n;
+        String al=Integer.toString(n)+Integer.toString(f)+Integer.toString(l);
+        Set<Character> st= new HashSet<>();
+        for(Character c:al.toCharArray()){
+            if(st.contains(c)){
+                return false;
+            }
+            if(c!='0'){
+            st.add(c);
+            }
+        }
+        if(st.size()==9){
+            return true;
+        }
+        return false;
+    }
+}

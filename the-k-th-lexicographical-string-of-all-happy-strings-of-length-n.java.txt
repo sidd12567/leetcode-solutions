@@ -1,0 +1,27 @@
+class Solution {
+    ArrayList<String> ans = new ArrayList<>();
+    StringBuilder sb = new StringBuilder();
+    public String getHappyString(int n, int k) {
+        bt(n, ' ');
+        Collections.sort(ans);
+        if(ans.size()<k){
+            return "";
+        }
+        return ans.get(k-1);
+    }
+    void bt(int n, char pr){
+        if(sb.length()==n){
+            ans.add(sb.toString());
+            return;
+        }
+        else{
+            for(char c='a';c<='c';c++){
+                if(c!=pr){
+                    sb.append(c);
+                    bt(n,c);
+                    sb.delete(sb.length()-1,sb.length());
+                }
+            }
+        }
+    }
+}

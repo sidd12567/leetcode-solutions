@@ -1,0 +1,12 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+        HashMap<Integer,Integer> mp = new HashMap<>();
+        for(int i:nums){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+        }
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a,b)->b.getValue()-a.getValue());
+        pq.addAll(mp.entrySet());
+        Map.Entry<Integer, Integer> tp=pq.peek();
+        return tp.getKey();
+    }
+}

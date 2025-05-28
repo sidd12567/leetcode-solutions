@@ -1,0 +1,20 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        HashMap<Integer, Integer> mp = new HashMap<>();
+        PriorityQueue<Map.Entry<Integer, Integer>> pq = new PriorityQueue<>((a,b)->b.getValue()-a.getValue());
+        for(int i:nums){
+            mp.put(i, mp.getOrDefault(i, 0)+1);
+        }
+        pq.addAll(mp.entrySet());
+        int mj=nums.length/3;
+        List<Integer> ans = new ArrayList<>();
+        while(!pq.isEmpty()){
+            Map.Entry<Integer, Integer> m=pq.poll();
+            if(m.getValue()<=mj){
+                break;
+            }
+            ans.add(m.getKey());
+        }
+        return ans;
+    }
+}

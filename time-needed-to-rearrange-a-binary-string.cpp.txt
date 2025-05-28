@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int secondsToRemoveOccurrences(string s) {
+        int ans=0;
+    int fl=1;
+    while(fl){
+          fl=1;
+        for(int i=0;i<s.size();i++){
+           
+             if(s[i]=='0' && s[i+1]=='1' && i+1<s.size()){
+                 swap(s[i],s[i+1]);
+                i++;
+                fl=0;
+        }
+     
+    }
+        fl=1-fl;
+        ans++;
+    }
+   
+    return ans-1;
+    }
+};

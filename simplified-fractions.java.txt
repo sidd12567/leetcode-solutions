@@ -1,0 +1,20 @@
+class Solution {
+    public List<String> simplifiedFractions(int n) {
+       	 List<String> ans = new ArrayList<>();
+        HashMap<Double,Integer> mp = new HashMap<>();
+        for(double i=1;i<=n;i++){
+            for(double j=i+1;j<=n;j++){
+                double t=(i/j);
+                
+                if(!mp.containsKey(t)){
+                    mp.put(t,1);
+                    int p=(int)i;
+                    int q=(int)j;
+                    String tmp=Integer.toString(p)+'/'+Integer.toString(q);
+                    ans.add(tmp);
+                }
+            }
+        }
+        return ans;
+    }
+}

@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool isBipartite(vector<vector<int>>& graph) {
+        int si=graph.size();
+        vector<int> colors(si,-1);
+        for(int cu=0;cu<si;cu++){
+            if(colors[cu]!=-1){
+                continue;
+            }
+            if(he(graph, cu, 0, colors)==false){
+                return false;
+            }
+        }
+        return true;
+    }
+    bool he(vector<vector<int>>& graph, int cn, int c, vector<int>& colors){
+        if(colors[cn]!=-1){
+            return colors[cn]==c;
+        }
+        colors[cn]=c;
+        for(int i:graph[cn]){
+            if(he(graph,i, 1-c, colors)==false){
+                return false;
+            }
+        }
+        return true;
+    }
+};

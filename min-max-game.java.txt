@@ -1,0 +1,22 @@
+class Solution {
+    public int minMaxGame(int[] nums) {
+        if(nums.length==1){
+            return nums[0];
+        }
+        int l=nums.length;
+        int j=nums.length;
+        int[] nu=new int[l/2];
+        for(int i=0;i<l/2;i++){
+            
+            
+            if(i%2==0){
+                nu[i]=Math.min(nums[2*i],nums[2*i+1]);
+            }
+            else{
+                nu[i]=Math.max(nums[2*i],nums[2*i+1]);
+            }
+        }
+        int ans=minMaxGame(nu);
+        return ans;
+    }
+}

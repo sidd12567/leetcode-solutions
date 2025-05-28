@@ -1,0 +1,45 @@
+class Solution { 
+ Random rand = new Random(); // class-level random generator
+
+int partition(int[] nums, int low, int high) {
+    // ✅ Randomly choose a pivot index and swap it to the front
+    int pivotIndex = low + rand.nextInt(high - low + 1);
+    int tmp = nums[low];
+    nums[low] = nums[pivotIndex];
+    nums[pivotIndex] = tmp;
+
+    int i = low;
+    int j = high;
+    int p = nums[low]; // pivot is now at nums[low]
+
+    while (i < j) {
+        while (i < high && nums[i] <= p) i++;
+        while (j > low && nums[j] > p) j--;
+        if (i < j) {
+            tmp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = tmp;
+        }
+    }
+
+    // Place pivot at correct position
+    tmp = nums[low];
+    nums[low] = nums[j];
+    nums[j] = tmp;
+
+    return j;
+}
+void qs(int[] nums, int low, int high) {
+    if (low < high) {
+        int pt = partition(nums, low, high);
+        qs(nums, low, pt - 1);
+        qs(nums, pt + 1, high);
+    }
+}
+
+public int[] sortArray(int[] nums) {
+    qs(nums, 0, nums.length - 1);
+    return nums;
+}
+
+}

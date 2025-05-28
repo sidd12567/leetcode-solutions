@@ -1,0 +1,10 @@
+class Solution {
+public:
+    double average(vector<int>& salary) {
+        double su=accumulate(salary.begin(),salary.end(),0);
+        double mx=*max_element(salary.begin(),salary.end());
+        double mn=*min_element(salary.begin(),salary.end());
+        su=su-mx-mn;
+        return su/(salary.size()-2);
+    }
+};

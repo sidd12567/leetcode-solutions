@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int minMaxDifference(int num) {
+        int mn=INT_MAX;
+        int mx=0;
+        string tmp=to_string(num);
+        string nn=tmp;
+        for(int i=0;i<=9;i++){
+            
+            replace(tmp.begin(),tmp.end(),i+48,48);
+            int ntm=stoi(tmp);
+            mn=min(ntm,mn);
+            tmp=nn;
+            replace(tmp.begin(),tmp.end(),i+48,57);
+            int mm=stoi(tmp);
+            mx=max(mm,mx);
+            tmp=nn;
+        }
+        return mx-mn;
+    }
+};

@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<int> twoOutOfThree(vector<int>& nums1, vector<int>& nums2, vector<int>& nums3) {
+        map<int,int> mp;
+        for(int i:nums1){
+            mp[i]++;
+        }
+        set<int> ans;
+        map<int,int> np;
+        for(int i:nums2){
+            if(mp[i]==0){
+                np[i]++;
+            }
+            else if(mp[i]>0){
+                ans.insert(i);
+                np[i]++;
+            }
+        }
+        map<int,int> tp;
+        for(int i:nums3){
+            if(mp[i]==0 && np[i]==0){
+                tp[i]++;
+            }
+            else if(mp[i]>0 && np[i]==0){
+                ans.insert(i);
+            }
+            else if(mp[i]==0 && np[i]>0){
+                ans.insert(i);
+            }
+           
+            else if(mp[i]>0 && np[i]>0){
+                ans.insert(i);
+            }
+            
+            
+        }
+        vector<int> ak;
+        for(auto it:ans){
+            ak.push_back(it);
+        }
+        return ak;
+    }
+};

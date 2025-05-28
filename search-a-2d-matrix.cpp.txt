@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        int si=matrix.size();
+        int ss=matrix[0].size();
+        for(int i=0;i<si;i++){
+            if(matrix[i][0]<=target && target<=matrix[i][ss-1]){
+                for(int j=0;j<ss;j++){
+                    if(matrix[i][j]==target){
+                        return true;
+                    }
+                    else{
+                        continue;
+                    }
+                }
+            }
+            
+        }
+        return false;
+    }
+};

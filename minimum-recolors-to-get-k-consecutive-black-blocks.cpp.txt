@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int minimumRecolors(string s, int k) {
+        int si=s.length();
+   int i=0,j=0,wc=0,bc=0,ans=INT_MAX,cnt=0;
+   while(i<si){
+       if(s[i]=='B'){
+           bc++;
+           i++;
+        
+       }
+       else if(s[i]=='W'){
+                      
+           wc++;
+           i++;
+           
+       }
+       if(i-j>=k){
+         
+            ans=min(ans,k-bc);
+            i=j+1;
+            
+           j++;bc=0;wc=0;
+       }
+       
+   }
+   return ans;
+    }
+};

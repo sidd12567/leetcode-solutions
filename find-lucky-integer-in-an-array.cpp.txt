@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int findLucky(vector<int>& arr) {
+        map<int,int> mp;
+        for(int i:arr){
+            mp[i]++;
+        }
+        int mx=0;
+        for(auto it:mp){
+            if(it.first==it.second){
+                mx=it.first;
+            }
+        }
+        return mx==0?-1:mx;
+    }
+};

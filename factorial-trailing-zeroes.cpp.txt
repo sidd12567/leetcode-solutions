@@ -1,0 +1,17 @@
+class Solution {
+public: 
+    int tl(int n){ 
+        if(n<0){ 
+            return -1; 
+        }  
+        int c=0;
+        for(int i=5;n/i>=1;i=i*5){ 
+            c+=n/i; 
+        } 
+        return c; 
+    }
+    int trailingZeroes(int n) {
+        int ans=tl(n); 
+        return ans;
+    }
+};

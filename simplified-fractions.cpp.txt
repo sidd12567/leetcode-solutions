@@ -1,0 +1,22 @@
+class Solution {
+public:
+    vector<string> simplifiedFractions(int n) {
+        vector<string> ans;
+        vector<double> ani;
+        for(double i=1;i<n;i++){
+            for(double j=i+1;j<=n;j++){
+                string fi=to_string(int(i));
+                fi+='/';
+                fi+=to_string(int(j));
+                double ni=i/j;
+                auto it=find(ani.begin(),ani.end(),ni);
+                if(it==ani.end()){
+                    //cout<<ni<<" "<<fi<<endl;
+                ani.push_back(ni);
+                ans.push_back(fi);
+                }
+            }
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,35 @@
+class Solution {
+    public List<Boolean> checkArithmeticSubarrays(int[] nums, int[] l, int[] r) {
+        int si=l.length;
+        int ss=nums.length;
+        List<Boolean> ans = new ArrayList<>();
+        for(int i=0;i<si;i++){
+            int ind=l[i];
+            int sind=r[i];
+            int isi=sind-ind+1;
+            int[] nar=new int[isi];
+            int t=0;
+            for(int j=ind;j<=sind;j++){
+                nar[t]=nums[j];
+                t++;
+            }
+            Arrays.sort(nar);
+            int d=nar[1]-nar[0];
+            boolean tmp=false;
+            t=0;
+            for(int j=ind;j<sind;j++){
+                if(d!=nar[t+1]-nar[t]){
+                    ans.add(false);
+                    tmp=true;
+                    break;
+                }
+                t++;
+            }
+            if(tmp!=true){
+                ans.add(true);
+            }
+
+        }
+        return ans;
+    }
+}

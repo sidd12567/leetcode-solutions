@@ -1,0 +1,21 @@
+class Solution {
+    public boolean checkDistances(String s, int[] distance) {
+        int[] ar = new int[26];
+        Arrays.fill(ar, -1);
+        for(int i=0;i<s.length();i++){
+            int cc=s.charAt(i)-'a';
+            
+            if(ar[cc]==-1){
+                ar[cc]=i;
+            }
+            else{
+                int db=i-ar[cc]-1;
+                if(db!=distance[cc]){
+                    return false;
+                }
+            }
+            
+        }
+        return true;
+    }
+}

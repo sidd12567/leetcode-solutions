@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int minCostConnectPoints(vector<vector<int>>& points) {
+        int n=points.size();
+        vector<vector<pair<int,int>>> gr(n);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<n;j++){
+                if(i==j){
+                    continue;
+                }
+                gr[i].push_back({abs(points[i][0]-points[j][0])+abs(points[i][1]-points[j][1]),j});
+            }
+        }
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> pq;
+        pq.push({0,0});
+        vector<bool> vis(n,false);
+        int ans=0;
+        while(!pq.empty()){
+            pair<int,int> pr=pq.top();
+            int cn=pr.second;
+            int cc=pr.first;
+            
+            pq.pop();
+            if(vis[cn]){
+                continue;
+            }
+            ans+=cc;
+            vis[cn]=true;
+            for(int i=0;i<gr[cn].size();i++){
+                int nn=gr[cn][i].second;
+                int nc=gr[cn][i].first;
+                if(vis[nn]){
+                    continue;
+                }
+                pq.push({nc,nn});
+            }
+        }
+        return ans;
+    }
+};

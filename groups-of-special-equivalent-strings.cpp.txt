@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int numSpecialEquivGroups(vector<string>& words) {
+        set<string> ans;
+        for(string st:words){
+            string ev,od;
+            for(int i=0;i<st.size();i++){
+                if(i%2==0){
+                    ev+=st[i];
+                }
+                else{
+                    od+=st[i];
+                }
+            }
+            sort(ev.begin(),ev.end());
+            sort(od.begin(),od.end());
+            ans.insert(ev+od);
+        }
+        return ans.size();
+    }
+};

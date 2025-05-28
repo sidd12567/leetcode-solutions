@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<string>> suggestedProducts(vector<string>& products, string searchWord) {
+        int si=searchWord.size();
+        int ss=products.size();
+        sort(products.begin(),products.end());
+        vector<vector<string>> ans(si);
+        for(int i=0;i<si;i++){
+            string suv=searchWord.substr(0,i+1);
+                
+            for(int j=0;j<ss;j++){
+                string it=products[j].substr(0,i+1);
+                if(it==suv){
+                    if(ans[i].size()>=3){
+                        break;
+                    }
+                    ans[i].push_back(products[j]);
+                    
+                }
+            }
+        }
+        return ans;
+        
+    }
+};

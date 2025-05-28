@@ -1,0 +1,21 @@
+class Solution {
+    public String sortSentence(String s) {
+        String[] ans=s.split(" ");
+        String[] ani=new String[ans.length];
+
+        for(int i=0;i<ans.length;i++){
+            String t=ans[i];
+            int p=Integer.parseInt(t.charAt(t.length()-1)+"");
+            ani[p-1]=t.substring(0,t.length()-1);
+
+
+        }
+        String an="";
+        for(int i=0;i<ani.length;i++){
+            an+=ani[i]+" ";
+
+        }
+        an=an.substring(0,an.length()-1);
+        return an;
+    }
+}

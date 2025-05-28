@@ -1,0 +1,26 @@
+class Solution {
+    public int[] restoreArray(int[][] adj) {
+        HashMap<Integer,ArrayList<Integer>> mp = new HashMap<>();
+        int si=adj.length;
+        for(int i=0;i<si;i++){
+                mp.putIfAbsent(adj[i][0],new ArrayList<>());
+                mp.putIfAbsent(adj[i][1], new ArrayList<>());
+                mp.get(adj[i][0]).add(adj[i][1]);
+                mp.get(adj[i][1]).add(adj[i][0]);
+            
+        }
+        int[] ans = new int[si+1];
+        for(Map.Entry<Integer,ArrayList<Integer>> m:mp.entrySet()){
+            if(m.getValue().size()==1){
+                ans[0]=m.getKey();
+                ans[1]=m.getValue().get(0);
+                break;
+            }
+        }
+        for(int i=2;i<ans.length;i++){
+            var a=mp.get(ans[i-1]);
+            ans[i]=a.get(0)==ans[i-2] ? a.get(1):a.get(0);
+        }
+        return ans;
+    }
+}

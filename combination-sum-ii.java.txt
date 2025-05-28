@@ -1,0 +1,28 @@
+class Solution {
+    void findc(int ind, List<Integer> ds, int target, List<List<Integer>> ans, int[] candidates){
+        if(ind==candidates.length){
+            if(target==0){
+                Collections.sort(ds);
+                ans.add(new ArrayList<>(ds));
+            }
+            return;
+        }
+        if(candidates[ind]<=target){
+            ds.add(candidates[ind]);
+            findc(ind+1, ds, target-candidates[ind], ans, candidates);
+            ds.remove(ds.size()-1);
+        }
+         int next = ind + 1;
+        while (next < candidates.length && candidates[next] == candidates[ind]) {
+            next++;
+        }
+        findc(next, ds, target, ans, candidates); 
+    }
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(candidates);
+        findc(0, new ArrayList<Integer>(), target, ans, candidates);
+        return ans;
+        
+    }
+}

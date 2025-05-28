@@ -1,0 +1,13 @@
+class Solution {
+    public int countDigits(int num) {
+        int ans=0;
+        String n=String.valueOf(num);
+        for(char c:n.toCharArray()){
+            int t=c-'0';
+            if(num%t==0){
+                ans++;
+            }
+        }
+        return ans;
+    }
+}

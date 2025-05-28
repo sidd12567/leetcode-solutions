@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int fi(string fi, string si){
+    if(si.find(fi)!=string::npos){
+        return 1;
+    }
+    return -1;
+}
+    
+    vector<string> stringMatching(vector<string>& words) {
+        vector<string> ans;
+    for(int i=0;i<words.size();i++){
+        for(int j=0;j<words.size();j++){
+            if(j!=i){
+                if(fi(words[i],words[j])==1){
+                    ans.push_back(words[i]);
+                    break;
+                }
+            }
+        }
+    }
+        return ans;
+    }
+};

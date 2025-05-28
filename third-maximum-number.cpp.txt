@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int thirdMax(vector<int>& nums) {
+        set<int> st;
+        for(int i:nums){
+            st.insert(i);
+        }
+      if(st.size()>=3){
+          set<int>::iterator it=st.begin();
+          advance(it,st.size()-3);
+          return  *it;
+      }else{
+     
+        return *--st.end();
+      }
+    }
+};

@@ -1,0 +1,19 @@
+import java.util.regex.*;
+class Solution {
+    public int secondHighest(String s) {
+        String p="[0123456789]";
+        HashSet<Integer> st = new HashSet<>();
+        Pattern pt = Pattern.compile(p);
+        for(char c:s.toCharArray()){
+            Matcher matcher = pt.matcher(String.valueOf(c));
+            if(matcher.find()){
+                st.add(c-'0');
+            }
+        }
+        ArrayList<Integer> ans = new ArrayList<>(st);
+        if(ans.size()>=2){
+            return ans.get(ans.size()-2);
+        }
+        return -1;
+    }
+}

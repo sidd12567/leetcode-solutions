@@ -1,0 +1,25 @@
+class Solution {
+    public void dfs(int ro, int co, int[][] ans, int[] dr, int[] dc, int[][] image, int color, int ini){
+        ans[ro][co]=color;
+        int n=image.length;
+        int m=image[0].length;
+        for(int i=0;i<4;i++){
+            int nr=ro+dr[i];
+            int nc=co+dc[i];
+            if(nr>=0 && nc>=0 && nr<n && nc<m && image[nr][nc]==ini && ans[nr][nc]!=color){
+                dfs(nr, nc, ans, dr, dc, image, color, ini);
+            }
+        }
+    }
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+        int[] dr={-1, 0, 1, 0};
+        int[] dc={0, 1, 0, -1};
+        int ini=image[sr][sc];
+        int n=image.length;
+        int m=image[0].length;
+
+        int[][] ans = image;
+        dfs(sr, sc, ans, dr, dc, image, color, ini);
+        return ans;
+    }
+}
