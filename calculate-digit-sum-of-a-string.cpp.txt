@@ -1,0 +1,19 @@
+class Solution {
+public:
+    string digitSum(string s, int k) {
+        int i=0,j=0;
+        while(s.size()>k){
+            string ans="";
+            for( i=0;i<s.size();){
+                int sm=0;
+                for( j=i;j<i+k && j<s.size();j++){
+                    sm+=(s[j]-48);
+                }
+                ans+=to_string(sm);
+                i=j;
+            }
+            s=ans;
+        }
+        return s;
+    }
+};

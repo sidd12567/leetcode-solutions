@@ -1,16 +1,16 @@
 class Solution {
     public int differenceOfSum(int[] nums) {
         int ans=0;
+        int tmp=0;
         for(int i:nums){
             ans+=i;
-        }
-        int ani=0;
-        for(int j=0;j<nums.length;j++){
-            String t = Integer.toString(nums[j]);
-            for(int k=0;k<t.length();k++){
-                ani+=(t.charAt(k)-'0');
+            while(i>0){
+                tmp+=i%10;
+                i=i/10;
+
             }
         }
-        return Math.abs(ans-ani);
+        return Math.abs(ans-tmp);
+        
     }
 }

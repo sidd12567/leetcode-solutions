@@ -1,0 +1,16 @@
+class Solution {
+public:
+    string restoreString(string s, vector<int>& indices) {
+        char ar[s.size()];
+        int si=s.size();
+        for(int i=0;i<si;i++){
+            ar[indices[i]]=s[i];
+            
+        }
+        string ans;
+        for(char i:ar){
+            ans+=i;
+        }
+        return ans;
+    }
+};

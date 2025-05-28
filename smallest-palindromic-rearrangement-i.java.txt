@@ -1,0 +1,19 @@
+class Solution {
+    public String smallestPalindrome(String s) {
+        int si=s.length();
+        int ss=si/2;
+        if(si==1 || si==2){
+            return s;
+        }
+        char[] ar=s.substring(0,ss).toCharArray();
+        Arrays.sort(ar);
+        String ns=new String(ar);
+        StringBuilder sb=new StringBuilder(ns).reverse();
+        if(si%2==1){
+            ns+=s.charAt(ss);
+            
+        }
+        return ns+sb.toString();
+    
+    }
+}

@@ -1,0 +1,25 @@
+class Solution {
+public:
+    int minOperations(vector<string>& logs) {
+        int ans=0;
+        for(string it:logs){
+            int l=it.size();
+            if(it[l-1]=='/' && it[l-2]=='.' && l>2){
+                ans--;
+                if(ans<0){
+                    ans=0;
+                }
+            }
+            else if(it[l-1]=='/' && it[l-2]!='.'){
+                ans++;
+            }
+            else{
+                continue;
+            }
+        }
+        if(ans<=0){
+            return 0;
+        }
+        return ans;
+    }
+};

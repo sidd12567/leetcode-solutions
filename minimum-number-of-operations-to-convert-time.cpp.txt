@@ -1,0 +1,16 @@
+class Solution {
+public:
+    int gt(string &st){
+        return stoi(st.substr(0,2))*60+stoi(st.substr(3));
+    }
+    int convertTime(string current, string correct) {
+        int di=gt(correct)-gt(current);
+        int ar[4]={60,15,5,1};
+        int ans=0;
+        for(int i:ar){
+            ans+=di/i;
+            di%=i;
+        }
+        return ans;
+    }
+};

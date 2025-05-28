@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int numOfPairs(vector<string>& nums, string target) {
+        int ans=0;
+        int si=nums.size();
+        for(int i=0;i<si;i++){
+            for(int j=0;j<si;j++){
+                if(nums[i]+nums[j]==target && i!=j){
+                    ans++;
+                }
+            }
+        }
+        return ans;
+    }
+};

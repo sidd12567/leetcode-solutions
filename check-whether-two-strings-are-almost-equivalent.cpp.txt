@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool checkAlmostEquivalent(string word1, string word2) {
+        map<char,int> mp1,mp2;
+        for(char w:word1){
+            mp1[w]++;
+        }
+        for(char w:word2){
+            mp2[w]++;
+        }
+        int ans=0,ans2=0;
+        for(auto it:mp1){
+            char i=it.first;
+            int l=it.second;
+            int sl=mp2[i];
+            if(abs(l-sl)>3){
+                return false;
+            }
+        }
+        for(auto it:mp2){
+            char i=it.first;
+            int l=it.second;
+            int sl=mp1[i];
+            if(abs(l-sl)>3){
+                return false;
+            }
+        }
+        return true;
+    }
+};

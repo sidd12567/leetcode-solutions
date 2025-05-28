@@ -1,0 +1,54 @@
+class Solution {
+public:
+    string reformatNumber(string number) {
+        string ans;
+        for(char i:number){
+            if(i=='-' || i==' '){
+                continue;
+            }
+            else{
+                ans+=i;
+            }
+        }
+        //cout<<ans<<endl;
+        int si=ans.size();
+        string nas="";
+        int i=0;
+        if(ans.size()>4){
+        while(true){
+            nas+=ans.substr(i,i+3);
+            nas+='-';
+            ans.erase(i,3);
+          //  cout<<ans<<endl;
+            if(ans.size()<=4){
+                
+                break;
+            }
+           
+            
+        }
+        }
+        //cout<<ans.size()<<endl;
+        if(ans.size()==4){
+            nas+=ans[0];
+            nas+=ans[1];
+            nas+='-';
+            nas+=ans[2];
+            nas+=ans[3];
+            
+        }
+        if(ans.size()==3){
+          //  cout<<ans[0]<<ans[1]<<ans[2]<<endl;
+            nas+=ans[0];
+            nas+=ans[1];
+            nas+=ans[2];
+            
+        }
+        if(ans.size()==2){
+            nas+=ans[0];
+            nas+=ans[1];
+        }
+        return nas;
+        
+    }
+};

@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int isPrefixOfWord(string sentence, string searchWord) {
+        auto se=" "+sentence;
+        auto si=" "+searchWord;
+        size_t po=se.find(si);
+        if(po!=string::npos){
+            return count(begin(se),begin(se)+po+1,' ');
+        }
+        return -1;
+    }
+};

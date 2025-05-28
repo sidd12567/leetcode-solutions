@@ -1,0 +1,18 @@
+class Solution {
+public:
+    vector<vector<int>> largestLocal(vector<vector<int>>& grid) {
+        int si=grid.size();
+        vector<vector<int>> ans(si-2,vector<int> (si-2));
+        
+        for(int i=0;i<si-2;i++){
+            for(int j=0;j<si-2;j++){
+                for(int ik=i;ik<i+3;ik++){
+                    for(int jk=j;jk<j+3;jk++){
+                        ans[i][j]=max(ans[i][j],grid[ik][jk]);
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+};
