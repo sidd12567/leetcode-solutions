@@ -1,18 +1,21 @@
 class Solution {
     public boolean isFascinating(int n) {
-        int f=2*n;
-        int l=3*n;
-        String al=Integer.toString(n)+Integer.toString(f)+Integer.toString(l);
-        Set<Character> st= new HashSet<>();
-        for(Character c:al.toCharArray()){
-            if(st.contains(c)){
-                return false;
-            }
-            if(c!='0'){
-            st.add(c);
+        int tn=2*n;
+        int thn=3*n;
+        HashMap<Character,Integer> mp = new HashMap<>();
+        HashSet<Character> st=new HashSet();
+        String tmp=Integer.toString(tn)+Integer.toString(n)+Integer.toString(thn);
+        for(int i=0;i<tmp.length();i++){
+            if(tmp.charAt(i)!='0'){
+                if(mp.containsKey(tmp.charAt(i))){
+                    return false;
+                }
+                else{
+                    mp.put(tmp.charAt(i),1);
+                }
             }
         }
-        if(st.size()==9){
+        if(mp.size()==9){
             return true;
         }
         return false;

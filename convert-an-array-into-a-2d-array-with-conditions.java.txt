@@ -1,0 +1,33 @@
+class Solution {
+     Map<Integer,Integer> mp=new HashMap<>();
+    int ian(Map<Integer,Integer> mp)
+    {
+        for(int i:mp.keySet())
+        {
+            if(mp.get(i)>=1)
+                return 1;
+        }
+        return 0;
+        
+    }
+    public List<List<Integer>> findMatrix(int[] nums) {
+        List<Integer> ans = new ArrayList<>();
+        
+        List<List<Integer>> an = new ArrayList<>();
+        for(int i:nums){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+        }
+        while(ian(mp)==1){
+            for(int i:mp.keySet()){
+                if(mp.get(i)>=1){
+                    ans.add(i);
+                    mp.put(i,mp.get(i)-1);
+                }
+            }
+            an.add(new ArrayList<>(ans));
+            ans.clear();
+            
+        }
+        return an;
+    }
+}

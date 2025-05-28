@@ -1,0 +1,31 @@
+class Solution {
+    public int minNumber(int[] nums1, int[] nums2) {
+        TreeMap<Integer,Integer> mp = new TreeMap<>();
+        for(int i:nums1){
+            mp.put(i,1);
+        }
+        Arrays.sort(nums2);
+        for(int i:nums2){
+            if(mp.containsKey(i)){
+                return i;
+            }
+            else{
+
+               continue;
+            }
+        }
+        int mn=Arrays.stream(nums1).min().getAsInt();
+        int mn1=Arrays.stream(nums2).min().getAsInt();
+        String tmp=Integer.toString(mn);
+        tmp+=Integer.toString(mn1);
+        String tmp2=Integer.toString(mn1);
+        tmp2+=Integer.toString(mn);
+        int o=Integer.parseInt(tmp);
+        int i=Integer.parseInt(tmp2);
+        
+        if(i>o){
+            return o;
+        }
+        return i;
+    }
+}

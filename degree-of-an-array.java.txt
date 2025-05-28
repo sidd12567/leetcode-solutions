@@ -1,0 +1,29 @@
+class Solution {
+    public int findShortestSubArray(int[] nums) {
+        HashMap<Integer,Integer> mp = new HashMap<>();
+        HashMap<Integer,Integer> wc = new HashMap<>();
+        
+        int mx=0;
+        for(int i:nums){
+            mp.put(i,mp.getOrDefault(i,0)+1);
+            mx=Math.max(mx,mp.get(i));
+        }
+        int j=0,wd=0;
+        int de=Collections.max(mp.values());
+        int ml=nums.length;
+        
+        for(int i=0;i<nums.length;i++){
+            wc.put(nums[i],wc.getOrDefault(nums[i],0)+1);
+            wd=Math.max(wd,wc.get(nums[i]));
+            while(wd==de){
+                ml=Math.min(ml,i-j+1);
+                wc.put(nums[j],wc.get(nums[j])-1);
+                j++;
+                if(nums[j-1]==nums[i]){
+                    wd--;
+                }
+            }
+        }
+        return ml;
+    }
+}

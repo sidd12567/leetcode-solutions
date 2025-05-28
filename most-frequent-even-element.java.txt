@@ -1,0 +1,22 @@
+class Solution {
+    public int mostFrequentEven(int[] nums) {
+        TreeMap<Integer,Integer> mp = new TreeMap<>();
+        for(int i:nums){
+            if(i%2==0){
+                mp.put(i,mp.getOrDefault(i,0)+1);
+            }
+        }
+        int ans=-1;
+        int mx=0;
+        if(mp.size()>0){
+            mx=Collections.max(mp.values());
+        }
+        for(Map.Entry<Integer,Integer> m:mp.entrySet()){
+            if(mx==m.getValue()){
+                ans=m.getKey();
+                break;
+            }
+        }
+        return ans;
+    }
+}
