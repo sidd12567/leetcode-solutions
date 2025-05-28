@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int fm(vector<vector<int>>& grid, int i, int j, int r, int c){
+        if(i<0 || j<0 || i>=r || j>=c || grid[i][j]==0){
+            return 0;
+        }
+        grid[i][j]=0;
+        int cnt=1;
+        cnt+=fm(grid, i+1,j,r,c);
+        cnt+=fm(grid, i-1,j,r,c);
+        cnt+=fm(grid, i,j-1,r,c);
+        cnt+=fm(grid, i,j+1,r,c);
+        return cnt;
+    }
+    int maxAreaOfIsland(vector<vector<int>>& grid) {
+        int ans=0;
+        int r=grid.size();
+        int c=grid[0].size();
+        for(int i=0;i<r;i++){
+            for(int j=0;j<c;j++){
+                if(grid[i][j]==1){
+                    ans=max(ans,fm(grid,i,j,r,c));
+                }
+            }
+        }
+        return ans;
+    }
+};

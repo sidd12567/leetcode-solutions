@@ -1,0 +1,27 @@
+class Solution {
+public:
+    void fap(vector<vector<int>>& graph, vector<bool>& vis, int cn, int n, vector<int> &curpath, vector<vector<int>>& ans){
+        if(cn==n-1){
+            ans.push_back(curpath);
+            return ;
+        }
+        if(vis[cn]==true){
+            return;
+        }
+        vis[cn]=true;
+        for(auto it:graph[cn]){
+            curpath.push_back(it);
+            fap(graph, vis, it, n, curpath, ans);
+            curpath.pop_back();
+        }
+        vis[cn]=false;
+    }
+    vector<vector<int>> allPathsSourceTarget(vector<vector<int>>& graph) {
+        vector<vector<int>> ans;
+        vector<bool> vis(graph.size(), false);
+        vector<int> curpath;
+        curpath.push_back(0);
+        fap(graph, vis, 0, graph.size(), curpath, ans);
+        return ans;
+    }
+};

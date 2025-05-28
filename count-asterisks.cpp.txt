@@ -1,0 +1,12 @@
+class Solution {
+public:
+    int countAsterisks(string s) {
+        int ans=0, sn=1;
+        for(char c:s){
+            if((sn^=c=='|') && c=='*'){
+                ans++;
+            }
+        }
+        return ans;
+    }
+};

@@ -1,0 +1,25 @@
+class Solution {
+public:
+    string sortSentence(string s) {
+        string ans="";
+        int si=s.size();
+        vector<string> vs(10);
+        for(int i=0;i<si;i++){
+            if(s[i]>='0' && s[i]<='9'){
+                vs[s[i]-'0']=ans+" ";
+                ans="";
+                i++;
+            }
+            else{
+                ans+=s[i];
+            }
+        }
+        string ans2="";
+        for(string j:vs){
+            ans2+=j;
+        }
+        ans2.pop_back();
+        return ans2;
+        
+    }
+};

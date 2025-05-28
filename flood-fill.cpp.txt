@@ -1,0 +1,20 @@
+class Solution {
+public:
+    void ff(vector<vector<int>>& image, int i, int j, int m, int n, int cc, int nc){
+        if(i<0 || j<0 || i>=m || j>=n || image[i][j]==nc || image[i][j]!=cc){
+            return ;
+        }
+        image[i][j]=nc;
+        ff(image, i-1, j, m, n, cc, nc);
+        ff(image, i+1, j, m, n, cc, nc);
+        ff(image, i, j+1, m, n, cc, nc);
+        ff(image, i, j-1, m, n, cc, nc);
+    }
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int color) {
+        int m=image.size();
+        int n=image[0].size();
+        int cc=image[sr][sc];
+        ff(image, sr, sc, m, n, cc, color);
+        return image;
+    }
+};
